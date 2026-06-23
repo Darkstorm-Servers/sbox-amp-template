@@ -36,6 +36,7 @@ App.IsWebApp=False
 App.AutoStart=False
 App.ConfigFiles=users/config.json
 App.UpdateSources=[{"UpdateStageName": "SteamCMD Install", "UpdateSourcePlatform": "All", "UpdateSource": "SteamCMD", "UpdateSourceData": "1892930", "UpdateSourceArgs": "+beta {{$BetaBranch}}", "UpdateSourceValidation": "validate"}]
+App.AppSettings={}
 
 App.Ports.$ApplicationPort1=27015
 App.Ports.$ApplicationPort1.Protocol=UDP
