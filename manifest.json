@@ -1,3 +1,11 @@
-[
-  "sbox.kvp"
-]   
+{
+  "id": "sbox-amp-template",
+  "authors": ["Darkstorm Servers"],
+  "origin": "https://github.com/Darkstorm-Servers/sbox-amp-template.git",
+  "url": "https://github.com/Darkstorm-Servers/sbox-amp-template",
+  "imagefile": "",
+  "prefix": "sbox",
+  "templates": [
+    "sbox.kvp"
+  ]
+}   
