@@ -50,14 +50,14 @@ GenericModule.App.Ports.$ApplicationPort2.Name=Query Port
 App.CommandLineArgs=+game {{$GamePackage}} {{$MapPackage}} +hostname {{$Hostname}} +port {{$ApplicationPort1}} +net_query_port {{$ApplicationPort2}} +net_game_server_token {{$ServerToken}} +maxplayers {{$MaxPlayers}}
 
 # User-Configurable Settings (Mapped to Command Line)
-# These FieldNames MUST match the "FieldName" in sboxconfig.json exactly.
+# FieldNames MUST match sboxconfig.json exactly
 App.Settings.$GamePackage.Name=Game Package
-App.Settings.$GamePackage.Description=The s&box game package to load (e.g., facepunch.sandbox).
+App.Settings.$GamePackage.Description=The s&box game package to load.
 App.Settings.$GamePackage.Default=facepunch.sandbox
 App.Settings.$GamePackage.Type=Text
 
 App.Settings.$MapPackage.Name=Map Package
-App.Settings.$MapPackage.Description=Optional map package to load (e.g., facepunch.flatgrass).
+App.Settings.$MapPackage.Description=Optional map package to load.
 App.Settings.$MapPackage.Default=facepunch.flatgrass
 App.Settings.$MapPackage.Type=Text
 
@@ -73,13 +73,13 @@ App.Settings.$ServerToken.Type=Text
 App.Settings.$ServerToken.IsSensitive=True
 
 App.Settings.$MaxPlayers.Name=Max Players
-App.Settings.$MaxPlayers.Description=Maximum number of players allowed on the server.
+App.Settings.$MaxPlayers.Description=Maximum number of players allowed.
 App.Settings.$MaxPlayers.Default=20
 App.Settings.$MaxPlayers.Type=Number
 App.Settings.$MaxPlayers.Min=1
 App.Settings.$MaxPlayers.Max=100
 
 App.Settings.$BetaBranch.Name=Steam Beta Branch
-App.Settings.$BetaBranch.Description=Set to 'staging' for beta builds, 'public' for stable.
+App.Settings.$BetaBranch.Description=Set to 'staging' for beta, 'public' for stable.
 App.Settings.$BetaBranch.Default=public
 App.Settings.$BetaBranch.Type=Text   
