@@ -1,4 +1,4 @@
-Meta.DisplayName=s&box Dedicated Server
+Meta.DisplayName=sBox Dedicated Server
 Meta.Description=s&box (Sandbox) Dedicated Server running on .NET. Requires SteamCMD App ID 1892930.
 Meta.OS=Windows, Linux
 Meta.Arch=x86_64
