@@ -5,7 +5,7 @@ Meta.Arch=x86_64
 Meta.Author=Darkstorm Servers
 Meta.URL=https://github.com/Darkstorm-Servers/sbox-amp-template
 Meta.DisplayImageSource=steam:1892930
-Meta.EndpointURIFormat=steam://connect/{ip}:{GenericModule.App.Ports.$ApplicationPort1}
+Meta.EndpointURIFormat=steam://connect/{ip}:{App.Ports.$ApplicationPort1}
 Meta.ConfigManifest=sboxconfig.json
 Meta.MetaConfigManifest=sboxmetaconfig.json
 Meta.ConfigRoot=sbox.kvp
@@ -18,7 +18,6 @@ Meta.ContainerPolicyReason=The server requires .NET 6.0+ Runtime. On Linux, usin
 Meta.Prerequisites=[]
 Meta.ExtraContainerPackages=[]
 Meta.ConfigVersion=1
-Meta.ReleaseNotes=Initial s&box template for Early Access. Uses SteamCMD 1892930.
 
 App.DisplayName=s&box Server
 App.RootDir=./sbox-server/
@@ -28,36 +27,30 @@ App.ExecutableWin=sbox-server.exe
 App.ExecutableLinux=./sbox-server
 App.WorkingDir=.
 App.LinuxCommandLineArgs=
+App.WindowsCommandLineArgs=
+App.CommandLineArgs=+game {{$GamePackage}} {{$MapPackage}} +hostname {{$Hostname}} +port {{$ApplicationPort1}} +net_query_port {{$ApplicationPort2}} +net_game_server_token {{$ServerToken}} +maxplayers {{$MaxPlayers}}
+App.UseLinuxIOREDIR=False
 App.WaitForExit=True
 App.ExitCodeDetection=0
 App.IsWebApp=False
 App.AutoStart=False
 App.ConfigFiles=users/config.json
-
-# CRITICAL FIX: Added App.UpdateSources for SteamCMD
 App.UpdateSources=[{"UpdateStageName": "SteamCMD Install", "UpdateSourcePlatform": "All", "UpdateSource": "SteamCMD", "UpdateSourceData": "1892930", "UpdateSourceArgs": "+beta {{$BetaBranch}}", "UpdateSourceValidation": "validate"}]
 
-# Application Ports
-GenericModule.App.Ports.$ApplicationPort1=27015
-GenericModule.App.Ports.$ApplicationPort1.Protocol=UDP
-GenericModule.App.Ports.$ApplicationPort1.Name=Game Port
-GenericModule.App.Ports.$ApplicationPort2=27016
-GenericModule.App.Ports.$ApplicationPort2.Protocol=UDP
-GenericModule.App.Ports.$ApplicationPort2.Name=Query Port
+App.Ports.$ApplicationPort1=27015
+App.Ports.$ApplicationPort1.Protocol=UDP
+App.Ports.$ApplicationPort1.Name=Game Port
+App.Ports.$ApplicationPort2=27016
+App.Ports.$ApplicationPort2.Protocol=UDP
+App.Ports.$ApplicationPort2.Name=Query Port
 
-# Command Line Configuration
-# Uses +game [package] [map] syntax.
-App.CommandLineArgs=+game {{$GamePackage}} {{$MapPackage}} +hostname {{$Hostname}} +port {{$ApplicationPort1}} +net_query_port {{$ApplicationPort2}} +net_game_server_token {{$ServerToken}} +maxplayers {{$MaxPlayers}}
-
-# User-Configurable Settings (Mapped to Command Line)
-# FieldNames MUST match sboxconfig.json exactly
 App.Settings.$GamePackage.Name=Game Package
-App.Settings.$GamePackage.Description=The s&box game package to load.
+App.Settings.$GamePackage.Description=The s&box game package to load (e.g., facepunch.sandbox).
 App.Settings.$GamePackage.Default=facepunch.sandbox
 App.Settings.$GamePackage.Type=Text
 
 App.Settings.$MapPackage.Name=Map Package
-App.Settings.$MapPackage.Description=Optional map package to load.
+App.Settings.$MapPackage.Description=Optional map package to load (e.g., facepunch.flatgrass).
 App.Settings.$MapPackage.Default=facepunch.flatgrass
 App.Settings.$MapPackage.Type=Text
 
@@ -73,13 +66,13 @@ App.Settings.$ServerToken.Type=Text
 App.Settings.$ServerToken.IsSensitive=True
 
 App.Settings.$MaxPlayers.Name=Max Players
-App.Settings.$MaxPlayers.Description=Maximum number of players allowed.
+App.Settings.$MaxPlayers.Description=Maximum number of players allowed on the server.
 App.Settings.$MaxPlayers.Default=20
 App.Settings.$MaxPlayers.Type=Number
 App.Settings.$MaxPlayers.Min=1
 App.Settings.$MaxPlayers.Max=100
 
 App.Settings.$BetaBranch.Name=Steam Beta Branch
-App.Settings.$BetaBranch.Description=Set to 'staging' for beta, 'public' for stable.
+App.Settings.$BetaBranch.Description=Set to 'staging' for beta builds, 'public' for stable.
 App.Settings.$BetaBranch.Default=public
 App.Settings.$BetaBranch.Type=Text   
