@@ -1,15 +1,16 @@
-Meta.DisplayName=sBox Dedicated Server
+Meta.DisplayName=s&box Dedicated Server
 Meta.Description=s&box (Sandbox) Dedicated Server running on .NET. Requires SteamCMD App ID 1892930.
 Meta.OS=Windows, Linux
 Meta.Arch=x86_64
-Meta.Author=CubeCoders, Community
-Meta.URL=https://sbox.game
+Meta.Author=Darkstorm Servers
+Meta.URL=https://github.com/Darkstorm-Servers/sbox-amp-template
 Meta.DisplayImageSource=steam:1892930
 Meta.EndpointURIFormat=steam://connect/{ip}:{GenericModule.App.Ports.$ApplicationPort1}
 Meta.ConfigManifest=sboxconfig.json
 Meta.MetaConfigManifest=sboxmetaconfig.json
-Meta.ConfigRoot=sbox-generic.kvp
-Meta.MinAMPVersion=2.5.0.4
+Meta.ConfigRoot=sbox.kvp
+Meta.MinAMPVersion=2.5.0.0
+Meta.AppConfigId=f47ac10b-58cc-4372-a567-0e02b2c3d479
 Meta.SpecificDockerImage=cubecoders/ampbase:dotnet-6.0
 Meta.DockerRequired=False
 Meta.ContainerPolicy=SupportedOnWindows, RecommendedOnLinux
@@ -17,15 +18,14 @@ Meta.ContainerPolicyReason=The server requires .NET 6.0+ Runtime. On Linux, usin
 Meta.Prerequisites=[]
 Meta.ExtraContainerPackages=[]
 Meta.ConfigVersion=1
-Meta.ReleaseNotes=Initial s&box template for Early Access (April 2026). Uses SteamCMD 1892930.
-Meta.AppConfigId=f47ac10b-58cc-4372-a567-0e02b2c3d479   
+Meta.ReleaseNotes=Initial s&box template for Early Access. Uses SteamCMD 1892930.
 
-App.DisplayName=sBox Server
+App.DisplayName=s&box Server
 App.RootDir=./sbox-server/
 App.BaseDirectory=./sbox-server/
 App.SteamWorkshopDownloadLocation=
 App.ExecutableWin=sbox-server.exe
-App.ExecutableLinux=./sbox-server.exe
+App.ExecutableLinux=./sbox-server
 App.WorkingDir=.
 App.LinuxCommandLineArgs=
 App.WaitForExit=True
@@ -34,8 +34,8 @@ App.IsWebApp=False
 App.AutoStart=False
 App.ConfigFiles=users/config.json
 
-GenericModule.UpdateSources=[{"UpdateStageName": "SteamCMD Install", "UpdateSourcePlatform": "All", "UpdateSource": "SteamCMD", "UpdateSourceData": "1892930", "UpdateSourceArgs": "+beta {BetaBranch}", "UpdateSourceValidation": "validate"}]
-GenericModule.BetaBranch=public
+# CRITICAL FIX: Added App.UpdateSources for SteamCMD
+App.UpdateSources=[{"UpdateStageName": "SteamCMD Install", "UpdateSourcePlatform": "All", "UpdateSource": "SteamCMD", "UpdateSourceData": "1892930", "UpdateSourceArgs": "+beta {{$BetaBranch}}", "UpdateSourceValidation": "validate"}]
 
 # Application Ports
 GenericModule.App.Ports.$ApplicationPort1=27015
@@ -46,17 +46,18 @@ GenericModule.App.Ports.$ApplicationPort2.Protocol=UDP
 GenericModule.App.Ports.$ApplicationPort2.Name=Query Port
 
 # Command Line Configuration
-# Uses +game [package] [map] syntax. Default: facepunch.sandbox on facepunch.flatgrass
-GenericModule.CommandLine=+game {GamePackage} {MapPackage} +hostname {Hostname} +port {ApplicationPort1} +net_query_port {ApplicationPort2} +net_game_server_token {ServerToken}
+# Uses +game [package] [map] syntax.
+App.CommandLineArgs=+game {{$GamePackage}} {{$MapPackage}} +hostname {{$Hostname}} +port {{$ApplicationPort1}} +net_query_port {{$ApplicationPort2}} +net_game_server_token {{$ServerToken}} +maxplayers {{$MaxPlayers}}
 
 # User-Configurable Settings (Mapped to Command Line)
+# These FieldNames MUST match the "FieldName" in sboxconfig.json exactly.
 App.Settings.$GamePackage.Name=Game Package
-App.Settings.$GamePackage.Description=The s&box game package to load (e.g., facepunch.sandbox, facepunch.walker).
+App.Settings.$GamePackage.Description=The s&box game package to load (e.g., facepunch.sandbox).
 App.Settings.$GamePackage.Default=facepunch.sandbox
 App.Settings.$GamePackage.Type=Text
 
 App.Settings.$MapPackage.Name=Map Package
-App.Settings.$MapPackage.Description=Optional map package to load (e.g., facepunch.flatgrass). Leave empty for default.
+App.Settings.$MapPackage.Description=Optional map package to load (e.g., facepunch.flatgrass).
 App.Settings.$MapPackage.Default=facepunch.flatgrass
 App.Settings.$MapPackage.Type=Text
 
@@ -66,12 +67,19 @@ App.Settings.$Hostname.Default=My AMP s&box Server
 App.Settings.$Hostname.Type=Text
 
 App.Settings.$ServerToken.Name=Game Server Token
-App.Settings.$ServerToken.Description=Steam Game Server Token for persistent Server ID. Optional but recommended.
+App.Settings.$ServerToken.Description=Steam Game Server Token for persistent Server ID.
 App.Settings.$ServerToken.Default=
 App.Settings.$ServerToken.Type=Text
 App.Settings.$ServerToken.IsSensitive=True
 
+App.Settings.$MaxPlayers.Name=Max Players
+App.Settings.$MaxPlayers.Description=Maximum number of players allowed on the server.
+App.Settings.$MaxPlayers.Default=20
+App.Settings.$MaxPlayers.Type=Number
+App.Settings.$MaxPlayers.Min=1
+App.Settings.$MaxPlayers.Max=100
+
 App.Settings.$BetaBranch.Name=Steam Beta Branch
 App.Settings.$BetaBranch.Description=Set to 'staging' for beta builds, 'public' for stable.
 App.Settings.$BetaBranch.Default=public
-App.Settings.$BetaBranch.Type=Text
+App.Settings.$BetaBranch.Type=Text   
