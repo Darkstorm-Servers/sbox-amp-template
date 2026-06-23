@@ -1,0 +1,9 @@
+[
+  {
+    "ConfigFile": "users/config.json",
+    "AutoMap": true,
+    "ConfigType": "json",
+    "Importable": true,
+    "Description": "Maps AMP settings to the s&box admin users configuration file."
+  }
+]

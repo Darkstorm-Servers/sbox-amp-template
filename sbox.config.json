@@ -1,0 +1,51 @@
+[
+  {
+    "DisplayName": "Game Package",
+    "Description": "The s&box game package to load (e.g., facepunch.sandbox).",
+    "FieldName": "GamePackage",
+    "InputType": "text",
+    "Category": "Game Settings",
+    "IncludeInCommandLine": true,
+    "ParamFieldName": "game",
+    "DefaultValue": "facepunch.sandbox",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Map Package",
+    "Description": "Optional map package to load (e.g., facepunch.flatgrass). Leave empty for default.",
+    "FieldName": "MapPackage",
+    "InputType": "text",
+    "Category": "Game Settings",
+    "IncludeInCommandLine": true,
+    "ParamFieldName": "map",
+    "DefaultValue": "facepunch.flatgrass",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Server Hostname",
+    "Description": "The name displayed in the Steam server lobby.",
+    "FieldName": "Hostname",
+    "InputType": "text",
+    "Category": "Server Settings",
+    "IncludeInCommandLine": true,
+    "ParamFieldName": "hostname",
+    "DefaultValue": "My AMP s&box Server",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Game Server Token",
+    "Description": "Steam Game Server Token for persistent Server ID. Generate at steamcommunity.com/dev/managegameservers.",
+    "FieldName": "ServerToken",
+    "InputType": "text",
+    "Category": "Server Settings",
+    "IncludeInCommandLine": true,
+    "ParamFieldName": "net_game_server_token",
+    "DefaultValue": "",
+    "Hidden": false,
+    "IsSensitive": true
+  },
+  {
+    "DisplayName": "Max Players",
+    "Description": "Maximum number of players allowed on the server.",
+    "FieldName": "MaxPlayers",
+    "InputType": "numbe
