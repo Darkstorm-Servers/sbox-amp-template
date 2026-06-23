@@ -1,0 +1,10 @@
+[
+  {
+    "UpdateStageName": "SteamCMD Install",
+    "UpdateSourcePlatform": "All",
+    "UpdateSource": "SteamCMD",
+    "UpdateSourceData": "1892930",
+    "UpdateSourceArgs": "+beta {{$BetaBranch}}",
+    "UpdateSourceValidation": "validate"
+  }
+]   
