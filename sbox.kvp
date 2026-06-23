@@ -21,11 +21,11 @@ Meta.ConfigVersion=1
 
 App.DisplayName=s&box Server
 App.RootDir=./sbox-server/
-App.BaseDirectory=./sbox-server/
+App.BaseDirectory=./sbox-server/1892930/
 App.SteamWorkshopDownloadLocation=
-App.ExecutableWin=/1892930/sbox-server.exe
-App.ExecutableLinux=./1892930/sbox-server.sh
-App.WorkingDir=.
+App.ExecutableWin=sbox-server.exe
+App.ExecutableLinux=./sbox-server.sh
+App.WorkingDir=1892930   
 App.LinuxCommandLineArgs=
 App.WindowsCommandLineArgs=
 App.CommandLineArgs=+game {{$GamePackage}} {{$MapPackage}} +hostname {{$Hostname}} +port {{$ApplicationPort1}} +net_query_port {{$ApplicationPort2}} +net_game_server_token {{$ServerToken}} +maxplayers {{$MaxPlayers}}
