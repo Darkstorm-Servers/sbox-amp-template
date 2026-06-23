@@ -4,7 +4,7 @@
   "origin": "https://github.com/Darkstorm-Servers/sbox-amp-template.git",
   "url": "https://github.com/Darkstorm-Servers/sbox-amp-template",
   "imagefile": "",
-  "prefix": "sbox",
+  "prefix": "Darkstorm Servers",
   "templates": [
     "sbox.kvp"
   ]
