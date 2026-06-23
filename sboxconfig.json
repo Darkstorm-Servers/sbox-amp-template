@@ -1,7 +1,7 @@
 [
   {
     "DisplayName": "Game Package",
-    "Description": "The s&box game package to load (e.g., facepunch.sandbox).",
+    "Description": "The s&box game package to load (e.g., facepunch.sandbox). If you are coming from gmod, this would be the game mode",
     "FieldName": "GamePackage",
     "InputType": "text",
     "Category": "Game Settings",
@@ -12,7 +12,7 @@
   },
   {
     "DisplayName": "Map Package",
-    "Description": "Optional map package to load (e.g., facepunch.flatgrass).",
+    "Description": "Optional map package to load (e.g., facepunch.flatgrass). - this is what map the server runs",
     "FieldName": "MapPackage",
     "InputType": "text",
     "Category": "Game Settings",
