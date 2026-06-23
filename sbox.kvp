@@ -18,6 +18,7 @@ Meta.Prerequisites=[]
 Meta.ExtraContainerPackages=[]
 Meta.ConfigVersion=1
 Meta.ReleaseNotes=Initial s&box template for Early Access (April 2026). Uses SteamCMD 1892930.
+Meta.AppConfigId=f47ac10b-58cc-4372-a567-0e02b2c3d479   
 
 App.DisplayName=sBox Server
 App.RootDir=./sbox-server/
