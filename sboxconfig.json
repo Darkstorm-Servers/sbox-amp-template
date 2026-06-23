@@ -12,7 +12,7 @@
   },
   {
     "DisplayName": "Map Package",
-    "Description": "Optional map package to load (e.g., facepunch.flatgrass). Leave empty for default.",
+    "Description": "Optional map package to load (e.g., facepunch.flatgrass).",
     "FieldName": "MapPackage",
     "InputType": "text",
     "Category": "Game Settings",
@@ -34,7 +34,7 @@
   },
   {
     "DisplayName": "Game Server Token",
-    "Description": "Steam Game Server Token for persistent Server ID. Generate at steamcommunity.com/dev/managegameservers.",
+    "Description": "Steam Game Server Token for persistent Server ID.",
     "FieldName": "ServerToken",
     "InputType": "text",
     "Category": "Server Settings",
@@ -48,4 +48,28 @@
     "DisplayName": "Max Players",
     "Description": "Maximum number of players allowed on the server.",
     "FieldName": "MaxPlayers",
-    "InputType": "numbe
+    "InputType": "number",
+    "Category": "Server Settings",
+    "IncludeInCommandLine": true,
+    "ParamFieldName": "maxplayers",
+    "DefaultValue": "20",
+    "MinValue": "1",
+    "MaxValue": "100",
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Steam Beta Branch",
+    "Description": "Select 'staging' for beta builds or 'public' for stable releases.",
+    "FieldName": "BetaBranch",
+    "InputType": "enum",
+    "Category": "Updates",
+    "IncludeInCommandLine": false,
+    "ParamFieldName": "BetaBranch",
+    "EnumValues": {
+      "public": "Public (Stable)",
+      "staging": "Staging (Beta)"
+    },
+    "DefaultValue": "public",
+    "Hidden": false
+  }
+]   
